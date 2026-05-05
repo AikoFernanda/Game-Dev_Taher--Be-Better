@@ -1,4 +1,4 @@
-**🚀 Instruksi Sebelum Clone Proyek
+## 🚀 Instruksi Sebelum Clone Proyek
 
 1. Sinkronisasi Versi Unity & Git LFS<br>
    Supaya tidak terjadi konflik data:
