@@ -22,5 +22,6 @@
    - Cara ceknya: buka folder proyek di Finder/Explorer, pastikan file .meta ada di samping setiap file aset.
    
 9. Scene utama
-    Setelah berhasil membuka project unity, Buka Scene di folder Assets/Scenes/1 untuk mencoba bermain.
+   - Setelah berhasil membuka project unity, Buka Scene di folder Assets/Scenes/1 untuk mencoba bermain.
+   
 11. ...
