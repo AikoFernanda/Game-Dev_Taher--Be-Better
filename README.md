@@ -1,3 +1,5 @@
+**🚀 Instruksi Sebelum Clone Proyek
+
 1. Sinkronisasi Versi Unity & Git LFS<br>
    Supaya tidak terjadi konflik data:
     - Versi Unity: Pastikan menggunakan versi Unity yang sama persis, menggunakan Unity 6.3 LTS (6000.3.5f2).
