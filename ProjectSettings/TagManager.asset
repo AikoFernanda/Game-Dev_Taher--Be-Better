@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - PlayerLayer
+  - NPC
+  - Quest
   layers:
   - Default
   - TransparentFX
