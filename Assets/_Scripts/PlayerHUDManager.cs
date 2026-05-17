@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections; // untuk run coroutine (fungsi delay waktu)
 
 public class PlayerHUDManager : MonoBehaviour
 {
@@ -12,6 +13,21 @@ public class PlayerHUDManager : MonoBehaviour
 
     [Header("Quest Tracker")]
     public TextMeshProUGUI questText;
+
+    [Header("New Quest Elements")]
+    public TextMeshProUGUI timerText;
+    public GameObject notificationPanel;
+    public TextMeshProUGUI notificationText;
+
+    // fungsi update angka timer
+    public void UpdateTimerText(string text, bool show)
+    {
+        if (timerText != null)
+        {
+            timerText.gameObject.SetActive(show);
+            timerText.text = text;
+        }
+    }
 
     // Fungsi untuk mengurangi nyawa Taher
     public void UpdateHearts(int currentHealth)
@@ -36,15 +52,24 @@ public class PlayerHUDManager : MonoBehaviour
         questText.text = newQuestInfo;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    // Fungsi untuk memicu popup notifikasi dari luar skrip
+    public void TriggerPopupNotification(string message, Color textColor)
     {
-        
+        StopAllCoroutines(); // stop notifikasi sebelumnya jika ada tabrakan
+        StartCoroutine(ShowNotificationRoutine(message, textColor));
     }
 
-    // Update is called once per frame
-    void Update()
+    // Perintah delay: Munculkan popup, tunggu 3 detik, lalu sembunyikan lagi
+    private IEnumerator ShowNotificationRoutine(string message, Color textColor)
     {
-        
+        if (notificationPanel != null && notificationText != null)
+        {
+            notificationText.text = message;
+            notificationText.color = textColor;
+            notificationPanel.SetActive(true); 
+
+            yield return new WaitForSeconds(3f); 
+            notificationPanel.SetActive(false); 
+        }
     }
 }

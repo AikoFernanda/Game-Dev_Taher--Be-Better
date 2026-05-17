@@ -26,6 +26,11 @@ public class DialogManager : MonoBehaviour
 
     public void StartDialog(string[] lines, NpcInteraction npc)
     {
+        // Jika QuestManager ada dan quest lagi jalan, dialog tidak boleh terbuka
+        if (QuestManager.instance != null && QuestManager.instance.CheckIfQuestActive()) 
+        {
+            return; 
+        }
         dialogBox.SetActive(true);
         choicePanel.SetActive(false);
         isWaitingForChoice = false;
@@ -57,6 +62,12 @@ public class DialogManager : MonoBehaviour
         // muncul kursor untuk memilih
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        // Reset fokus UI Button agar tidak menyimpan warna terpilih sebelumnya
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
     }
 
     public void DisplayNextSentence()
@@ -105,11 +116,15 @@ public class DialogManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Debug.Log("Dialog Selesai.");
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
     }
     // Update is called once per frame
     void Update()
     {
-        // Kode detektif ini hanya berjalan saat tombol pilihan muncul di layar
+        // Debugging, pendeteksi kursor UI
         if (isWaitingForChoice)
         {
             PointerEventData pointerData = new PointerEventData(EventSystem.current);
@@ -127,7 +142,7 @@ public class DialogManager : MonoBehaviour
             // Jika mouse menyentuh sesuatu di UI, cetak namanya di Console
             if (results.Count > 0)
             {
-                Debug.Log("Kursor MacBook lagi menyentuh objek UI bernama: " + results[0].gameObject.name);
+                Debug.Log("Kursor lagi menyentuh objek UI bernama: " + results[0].gameObject.name);
             }
         }
     }
