@@ -7,6 +7,8 @@ TagManager:
   - PlayerLayer
   - NPC
   - Quest
+  - Dompet
+  - Flashdisk
   layers:
   - Default
   - TransparentFX
@@ -14,8 +16,8 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
-  - 
+  - Dompet
+  - Flashdisk
   - 
   - 
   - 

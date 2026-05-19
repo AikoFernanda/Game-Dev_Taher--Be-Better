@@ -31,6 +31,13 @@ public class CameraOrbit : MonoBehaviour
     {
         if (target == null) return;
 
+        // jika game pause, cegah baca input mouse dan gerak kamera
+        if (QuestManager.instance != null && QuestManager.instance.CheckIfQuestActive () == false && Time.timeScale == 0f)
+        {
+            // jika belum terhubung ke manager lain:
+            if (Time.timeScale == 0f) return;
+        }
+        
         // ambil input mouse
         yaw += Input.GetAxis("Mouse X") * sensitivity;
         pitch -= Input.GetAxis("Mouse Y") * sensitivity;
