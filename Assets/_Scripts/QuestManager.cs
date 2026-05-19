@@ -25,6 +25,9 @@ public class QuestManager : MonoBehaviour
     // Variabel baru untuk mencatat ID quest apa yang sedang dikerjakan Taher saat ini
     private string currentActiveQuestID = "";
 
+    [Header("Game Over Settings")]
+    public GameObject gameOverPanel; // tarik gameoverpanel
+
     void Awake()
     {
         instance = this;
@@ -163,9 +166,51 @@ public class QuestManager : MonoBehaviour
             hud.TriggerPopupNotification("QUEST GAGAL!\nWaktu Telah Habis", Color.red);
         }
 
+        // deteksi nyawa 0 (lose condition)
+        if (playerHealth <= 0)
+        {
+            TriggerGameOver();
+            return;
+        }
+
         // Sembunyikan kembali dompetnya karena sudah gagal
         if (walletObject != null) walletObject.SetActive(false);
         if (flashdiskObject != null) flashdiskObject.SetActive(false);
+    }
+
+    void TriggerGameOver()
+    {
+        // munculkan panel kalah
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(true);
+        }
+        // hentikan total waktu dalam game agar player/npc berhenti
+        Time.timeScale = 0f;
+        // munculkan kursor mouse
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    // Fungsi baru untuk mengecek nyawa Taher 0
+    public bool CheckIfPlayerDead()
+    {
+        // Mengembalikan nilai true jika playerHealth kurang dari atau sama dengan 0
+        return playerHealth <= 0;
+    }
+
+    public void RetryGame()
+    {
+        Time.timeScale = 1f; // kembalikan kecepatan waktu game ke normal
+        // reload ulang Main scene dari awal secara bersih
+        string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(currentSceneName);
+    }
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1f; // kembalikan kecepatan waktu game ken normal
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu"); // load scene MainMenu
     }
 
     // fungsi agar skrip NPC bisa mengecek
