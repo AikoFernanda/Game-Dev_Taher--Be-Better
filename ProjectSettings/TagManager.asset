@@ -9,6 +9,10 @@ TagManager:
   - Quest
   - Dompet
   - Flashdisk
+  - Balloon1
+  - Balloon2
+  - Balloon3
+  - Balloon4
   layers:
   - Default
   - TransparentFX
