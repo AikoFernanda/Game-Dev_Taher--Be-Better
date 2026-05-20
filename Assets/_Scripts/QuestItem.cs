@@ -4,10 +4,10 @@ public class QuestItem : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        // Jika yang menyentuh dompet adalah Player
+        // Jika yang menyentuh adalah Player
         if (other.CompareTag("Player"))
         {
-            // Beritahu QuestManager bahwa quest sukses
+            // Beritahu QuestManager bahwa item sukses terambil
             if (QuestManager.instance != null)
             {
                 QuestManager.instance.RegisterItemCollected(gameObject.tag);

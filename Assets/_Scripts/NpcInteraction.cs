@@ -123,7 +123,7 @@ public class NpcInteraction : MonoBehaviour
         Debug.Log("Taher memilih positif");
         if (hud != null)
         {
-            hud.ChangeReputation(5f); 
+            hud.ChangeReputation(5f); // +5 reputasi
         }
 
         // KIRIMKAN ID DAN DURASI NPC INI KE QUEST MANAGER
