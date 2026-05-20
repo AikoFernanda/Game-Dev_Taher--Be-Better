@@ -14,8 +14,12 @@ public class QuestManager : MonoBehaviour
     public GameObject balloon3Object; // tarik object balloon3
     public GameObject balloon4Object; // tarik object balloon4
     public GameObject trashObject; // tarik object trash
+    public GameObject coffeObject;
+    public GameObject cookiesObject;
+    public GameObject curryObject;
+    public GameObject husbandObject;
     public float questDuration = 20.0f; // waktu quest default
-    
+
     private float timer;
     private bool isQuestActive = false;
     private int playerHealth = 3; // default awal
@@ -29,11 +33,19 @@ public class QuestManager : MonoBehaviour
     private bool hasBalloon3 = false;
     private bool hasBalloon4 = false;
     private int countTrash = 0;
+    private bool hasCoffe = false;
+    private bool hasCurry = false;
+    private bool hasCookies = false;
+    private bool hasHusband = false;
 
     // List: Menyimpan daftar ID Quest yang sudah berhasil dimenangkan
     private List<string> completedQuestIDs = new List<string>();
     // Variabel baru untuk mencatat ID quest apa yang sedang dikerjakan Taher saat ini
     private string currentActiveQuestID = "";
+
+    [Header("Final Quest Settings")]
+    public GameObject finalObjectivePanel; // Tarik panel final objektif
+    private bool isFinalQuestReady = false; // Penanda ending
 
     [Header("Game Over Settings")]
     public GameObject gameOverPanel; // tarik gameoverpanel
@@ -54,14 +66,19 @@ public class QuestManager : MonoBehaviour
         if (balloon3Object != null) balloon3Object.SetActive(false);
         if (balloon4Object != null) balloon4Object.SetActive(false);
         if (trashObject != null) trashObject.SetActive(false);
+        if (coffeObject != null) coffeObject.SetActive(false);
+        if (cookiesObject != null) cookiesObject.SetActive(false);
+        if (curryObject != null) curryObject.SetActive(false);
+        if (husbandObject != null) husbandObject.SetActive(false);
 
-
+        // sembunyikan dulu di awal game
+        if (finalObjectivePanel != null) finalObjectivePanel.SetActive(false);
 
         // Awal game, kosongkan list tugas dan sembunyikan teks timer
         if (hud != null)
         {
             hud.UpdateQuestTracker("-");
-            hud.UpdateTimerText("", false); 
+            hud.UpdateTimerText("", false);
         }
     }
 
@@ -92,13 +109,14 @@ public class QuestManager : MonoBehaviour
 
     public void StartQuest(string questID, float duration)
     {
-        if (isQuestActive) return; 
+        // JIKA SEMUA TUGAS SUDAH KELAR dan ada quest aktif
+        if (isFinalQuestReady || isQuestActive) return;
 
         // 1. IKAT ID Quest yang sedang aktif saat ini!
-        currentActiveQuestID = questID; 
+        currentActiveQuestID = questID;
 
         // 2. Gunakan durasi yang dikirim langsung dari NPC masing-masing
-        questDuration = duration; 
+        questDuration = duration;
 
         hasWallet = false;
         hasFlashdisk = false;
@@ -106,6 +124,10 @@ public class QuestManager : MonoBehaviour
         hasBalloon2 = false;
         hasBalloon3 = false;
         hasBalloon4 = false;
+        hasCoffe = false;
+        hasCookies = false;
+        hasCurry = false;
+        hasHusband = false;
         countTrash = 0;
 
         // Munculkan kedua barang di map (khusus quest wallet)
@@ -124,10 +146,18 @@ public class QuestManager : MonoBehaviour
             if (balloon4Object != null) balloon4Object.SetActive(true);
         }
 
-         // Munculkan trash di map (khusus quest trash)       
+        // Munculkan trash di map (khusus quest trash)       
         if (questID == "Trash")
         {
             if (trashObject != null) trashObject.SetActive(true);
+        }
+
+        // munculkan food and husband hitbox di map (khusus quest fisherman)
+        if (questID == "Fisherman")
+        {
+            if (coffeObject != null) coffeObject.SetActive(true);
+            if (cookiesObject != null) cookiesObject.SetActive(true);
+            if (curryObject != null) curryObject.SetActive(true);
         }
 
         isQuestActive = true;
@@ -135,7 +165,7 @@ public class QuestManager : MonoBehaviour
 
         UpdateQuestListVisual(questID);
     }
-    
+
     public void RegisterItemCollected(string itemTag)
     {
         if (!isQuestActive) return;
@@ -147,6 +177,10 @@ public class QuestManager : MonoBehaviour
         if (itemTag == "Balloon3") hasBalloon3 = true;
         if (itemTag == "Balloon4") hasBalloon4 = true;
         if (itemTag == "Trash") countTrash += 1;
+        if (itemTag == "Coffe") hasCoffe = true;
+        if (itemTag == "Cookies") hasCookies = true;
+        if (itemTag == "Curry") hasCurry = true;
+        if (itemTag == "Husband") hasHusband = true;
 
         // perbarui tulisan di task list dinamis
         UpdateQuestListVisual(currentActiveQuestID);
@@ -165,6 +199,21 @@ public class QuestManager : MonoBehaviour
 
         // jika 14 barang ditemukan, panggil completequest
         if (countTrash == 14)
+        {
+            CompleteQuest();
+        }
+
+        if (hasCoffe && hasCookies && hasCurry)
+        {
+            if (husbandObject != null)
+            {
+                husbandObject.SetActive(true);
+                UpdateQuestListVisual(currentActiveQuestID);
+            }
+        }
+
+        // jika 3 barang diambil dan memberikan ke husband, panggil completequest
+        if (hasCoffe && hasCookies && hasCurry && hasHusband)
         {
             CompleteQuest();
         }
@@ -196,6 +245,20 @@ public class QuestManager : MonoBehaviour
             hud.UpdateQuestTracker($"{trashStatus}");
         }
 
+        if (questID == "Fisherman")
+        {
+            string coffeStatus = hasCoffe ? "[+] Kopi Diambil" : "[-] Ambil Kopi!";
+            string cookiesStatus = hasCookies ? "[+] Kukis Diambil" : "[-] Ambil Kukis!";
+            string curryStatus = hasCurry ? "[+] Kari Diambil" : "[-] Ambil Kari!";
+            if (hasCoffe && hasCookies && hasCurry)
+            {
+                string husbandStatus = hasHusband ? "[+] Makanan sudah diantar" : "[-] Antar makanan ke Nelayan!";
+                hud.UpdateQuestTracker(husbandStatus);
+                return;
+            }
+            hud.UpdateQuestTracker($"{coffeStatus}\n{cookiesStatus}\n{curryStatus}");
+        }
+
     }
 
     public void CompleteQuest()
@@ -203,19 +266,65 @@ public class QuestManager : MonoBehaviour
         if (!isQuestActive) return;
 
         isQuestActive = false;
-        
-        // ID apa pun yang tadi diikat di awal, langsung dimasukkan ke list pemenang
-        completedQuestIDs.Add(currentActiveQuestID); 
-        
-        Debug.Log($"Quest {currentActiveQuestID} Berhasil!");
 
+        // Hanya tambahkan ID jika belum pernah selesai sebelumnya!
+        if (!completedQuestIDs.Contains(currentActiveQuestID))
+        {
+            completedQuestIDs.Add(currentActiveQuestID);
+        }
+
+        Debug.Log($"Quest {currentActiveQuestID} Berhasil! Total Quest Selesai: {completedQuestIDs.Count}");
         if (hud != null)
         {
             hud.UpdateQuestTracker("-");
             hud.UpdateTimerText("", false);
             hud.TriggerPopupNotification("QUEST BERHASIL!", Color.green);
-            hud.ChangeReputation(20f);
+            hud.ChangeReputation(15f);
         }
+
+        CheckFinalQuestCondition();
+    }
+
+    private void CheckFinalQuestCondition()
+    {
+        // cek apakah KE-4 NAMA QUEST INI MEMANG SUDAH ADA SEMUA di dalam list
+        bool walletDone = completedQuestIDs.Contains("Wallet");
+        bool balloonDone = completedQuestIDs.Contains("Balloon");
+        bool trashDone = completedQuestIDs.Contains("Trash");
+        bool fishermanDone = completedQuestIDs.Contains("Fisherman");
+
+        // Teks tamat muncul kalau ke-4 bool di atas bernilai TRUE (Selesai semua)
+        if (walletDone && balloonDone && trashDone && fishermanDone)
+        {
+            isFinalQuestReady = true;
+
+            if (finalObjectivePanel != null)
+            {
+                finalObjectivePanel.SetActive(true);
+                Invoke("HideFinalPanel", 4.0f);
+            }
+
+            if (hud != null)
+            {
+                hud.UpdateQuestTracker("[-] Tugas Desa Selesai!\n[-] Pulanglah menemui Ibu di rumah.");
+            }
+            Debug.Log("SISTEM: Sukses! Ke-4 NPC unik terdeteksi beres semua. Saatnya pulang menemui Ibu!");
+        }
+        else
+        {
+            // Log tambahan di console biar kamu tahu quest apa saja yang belum kamu kerjakan
+            Debug.Log($"SISTEM: Belum tamat. Status -> Wallet: {walletDone}, Balloon: {balloonDone}, Trash: {trashDone}, Fisherman: {fishermanDone}");
+        }
+    }
+
+    private void HideFinalPanel()
+    {
+        if (finalObjectivePanel != null) finalObjectivePanel.SetActive(false);
+    }
+
+    public bool IsReadyForEnding()
+    {
+        return isFinalQuestReady;
     }
 
     void FailQuest()
@@ -233,7 +342,7 @@ public class QuestManager : MonoBehaviour
             hud.UpdateTimerText("", false);
 
             // Update nyawa player
-            hud.UpdateHearts(playerHealth); 
+            hud.UpdateHearts(playerHealth);
 
             // Kirim pesan gagal ke POPUP TENGAH LAYAR dengan warna MERAH MALAM
             hud.TriggerPopupNotification("QUEST GAGAL!\nWaktu Telah Habis", Color.red);
@@ -246,7 +355,7 @@ public class QuestManager : MonoBehaviour
             return;
         }
 
-        // Sembunyikan kembali dompetnya karena sudah gagal
+        // Sembunyikan kembali item karena sudah gagal
         if (walletObject != null) walletObject.SetActive(false);
         if (flashdiskObject != null) flashdiskObject.SetActive(false);
         if (balloon1Object != null) balloon1Object.SetActive(false);
@@ -254,6 +363,10 @@ public class QuestManager : MonoBehaviour
         if (balloon3Object != null) balloon3Object.SetActive(false);
         if (balloon4Object != null) balloon4Object.SetActive(false);
         if (trashObject != null) trashObject.SetActive(false);
+        if (coffeObject != null) coffeObject.SetActive(false);
+        if (cookiesObject != null) cookiesObject.SetActive(false);
+        if (curryObject != null) curryObject.SetActive(false);
+        if (husbandObject != null) husbandObject.SetActive(false);
     }
 
     void TriggerGameOver()
