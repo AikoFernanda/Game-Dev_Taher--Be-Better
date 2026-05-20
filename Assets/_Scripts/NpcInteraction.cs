@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NpcInteraction : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class NpcInteraction : MonoBehaviour
     public float interactionDistance = 3f;
     private PlayerHUDManager hud; // menampung HUD
 
-    [Header("Custom Choices Text")]
+    [Header("Custom Choices Text")] // default
     public string teksPositif = "Tentu, saya bantu!";
     public string teksNegatif = "Gak peduli, cari sendiri!";
     public string teksNetral  = "Maaf, saya sedang lelah.";
@@ -20,7 +21,7 @@ public class NpcInteraction : MonoBehaviour
     public GameObject interactionPrompt; // teks "Press E to Talk"
 
     [Header("Quest Identity")]
-    public string npcQuestID; // Tulis ID Unik di Inspector (Contoh: "Wallet", "Trash", atau "Kite")
+    public string npcQuestID; // ID Unik di Inspector untuk tiap quest
     public float questDuration = 20f; // Nilai default 20 detik, bisa ubah sesuaikan tiap npc diInspector
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -93,7 +94,7 @@ public class NpcInteraction : MonoBehaviour
         }
     }
 
-        // terdeteksi player menjauh
+        // terdeteksi player mendekat
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
