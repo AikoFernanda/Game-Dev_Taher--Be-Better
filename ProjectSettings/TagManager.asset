@@ -13,6 +13,7 @@ TagManager:
   - Balloon2
   - Balloon3
   - Balloon4
+  - Trash
   layers:
   - Default
   - TransparentFX

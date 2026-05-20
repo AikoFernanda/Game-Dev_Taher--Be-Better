@@ -13,7 +13,8 @@ public class QuestManager : MonoBehaviour
     public GameObject balloon2Object; // tarik object balloon2
     public GameObject balloon3Object; // tarik object balloon3
     public GameObject balloon4Object; // tarik object balloon4
-    public float questDuration = 20.0f; // waktu quest
+    public GameObject trashObject; // tarik object trash
+    public float questDuration = 20.0f; // waktu quest default
     
     private float timer;
     private bool isQuestActive = false;
@@ -27,6 +28,7 @@ public class QuestManager : MonoBehaviour
     private bool hasBalloon2 = false;
     private bool hasBalloon3 = false;
     private bool hasBalloon4 = false;
+    private int countTrash = 0;
 
     // List: Menyimpan daftar ID Quest yang sudah berhasil dimenangkan
     private List<string> completedQuestIDs = new List<string>();
@@ -51,6 +53,7 @@ public class QuestManager : MonoBehaviour
         if (balloon2Object != null) balloon2Object.SetActive(false);
         if (balloon3Object != null) balloon3Object.SetActive(false);
         if (balloon4Object != null) balloon4Object.SetActive(false);
+        if (trashObject != null) trashObject.SetActive(false);
 
 
 
@@ -103,6 +106,7 @@ public class QuestManager : MonoBehaviour
         hasBalloon2 = false;
         hasBalloon3 = false;
         hasBalloon4 = false;
+        countTrash = 0;
 
         // Munculkan kedua barang di map (khusus quest wallet)
         if (questID == "Wallet")
@@ -111,13 +115,19 @@ public class QuestManager : MonoBehaviour
             if (flashdiskObject != null) flashdiskObject.SetActive(true);
         }
 
-        // Munculkan kedua barang di map (khusus quest wallet)
+        // Munculkan kedua barang di map (khusus quest balloon)
         if (questID == "Balloon")
         {
             if (balloon1Object != null) balloon1Object.SetActive(true);
             if (balloon2Object != null) balloon2Object.SetActive(true);
             if (balloon3Object != null) balloon3Object.SetActive(true);
             if (balloon4Object != null) balloon4Object.SetActive(true);
+        }
+
+         // Munculkan trash di map (khusus quest trash)       
+        if (questID == "Trash")
+        {
+            if (trashObject != null) trashObject.SetActive(true);
         }
 
         isQuestActive = true;
@@ -136,6 +146,7 @@ public class QuestManager : MonoBehaviour
         if (itemTag == "Balloon2") hasBalloon2 = true;
         if (itemTag == "Balloon3") hasBalloon3 = true;
         if (itemTag == "Balloon4") hasBalloon4 = true;
+        if (itemTag == "Trash") countTrash += 1;
 
         // perbarui tulisan di task list dinamis
         UpdateQuestListVisual(currentActiveQuestID);
@@ -146,8 +157,14 @@ public class QuestManager : MonoBehaviour
             CompleteQuest();
         }
 
-        // jika 2 barang ditemukan, panggil completequest
+        // jika 4 balon barang ditemukan, panggil completequest
         if (hasBalloon1 && hasBalloon2 && hasBalloon3 && hasBalloon4)
+        {
+            CompleteQuest();
+        }
+
+        // jika 14 barang ditemukan, panggil completequest
+        if (countTrash == 14)
         {
             CompleteQuest();
         }
@@ -171,6 +188,12 @@ public class QuestManager : MonoBehaviour
             string balloon3Status = hasBalloon3 ? "[+] Balon Bintang Ditemukan" : "[-] Ambil Balon Bintang!";
             string balloon4Status = hasBalloon4 ? "[+] Balon Hati Ditemukan" : "[-] Ambil Balon Hati!";
             hud.UpdateQuestTracker($"{balloon1Status}\n{balloon2Status}\n{balloon3Status}\n{balloon4Status}");
+        }
+
+        if (questID == "Trash")
+        {
+            string trashStatus = countTrash == 14 ? "[+] Berhasil mengumpulkan semua sampah" : "[-] Kumpulkan semua sampah! (" + countTrash + "/14)";
+            hud.UpdateQuestTracker($"{trashStatus}");
         }
 
     }
@@ -230,6 +253,7 @@ public class QuestManager : MonoBehaviour
         if (balloon2Object != null) balloon2Object.SetActive(false);
         if (balloon3Object != null) balloon3Object.SetActive(false);
         if (balloon4Object != null) balloon4Object.SetActive(false);
+        if (trashObject != null) trashObject.SetActive(false);
     }
 
     void TriggerGameOver()
@@ -277,35 +301,5 @@ public class QuestManager : MonoBehaviour
     {
         // Cek apakah ID quest-nya ada di dalam list yang sudah menang
         return completedQuestIDs.Contains(questID);
-    }
-
-    public bool HasWallet()
-    {
-        return hasWallet;
-    }
-
-    public bool HasFlashdisk()
-    {
-        return hasFlashdisk;
-    }
-
-    public bool HasBalloon1()
-    {
-        return hasBalloon1;
-    }
-
-    public bool HasBalloon2()
-    {
-        return hasBalloon2;
-    }
-
-    public bool HasBalloon3()
-    {
-        return hasBalloon3;
-    }
-
-    public bool HasBalloon4()
-    {
-        return hasBalloon4;
     }
 }
