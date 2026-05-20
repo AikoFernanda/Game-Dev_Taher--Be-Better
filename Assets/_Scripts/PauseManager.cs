@@ -6,6 +6,8 @@ public class PauseManager : MonoBehaviour
     [Header("UI Reference")]
     public GameObject pausePanel; // tarik pausepanel
     private bool isPaused = false;
+
+    public GameObject latterPanel;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,8 +23,8 @@ public class PauseManager : MonoBehaviour
             return; // tombol esc jadi tidak berfungsi
         }
 
-        // deteksi jika pemain mekena escape (Esc)
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // deteksi jika pemain meknekan escape (Esc) DAN panel surat (winning conditon) tidak sedang aktif
+        if (Input.GetKeyDown(KeyCode.Escape) && (latterPanel == null || !latterPanel.activeSelf))
         {
             if (isPaused)
             {
