@@ -306,7 +306,7 @@ public class QuestManager : MonoBehaviour
 
             if (hud != null)
             {
-                hud.UpdateQuestTracker("[-] Tugas Desa Selesai!\n[-] Pulanglah menemui Ibu di rumah.");
+                hud.UpdateQuestTracker("[+] Tugas Desa Selesai!\n[-] Pulanglah menemui Ibu di rumah.");
             }
             Debug.Log("SISTEM: Sukses! Ke-4 NPC unik terdeteksi beres semua. Saatnya pulang menemui Ibu!");
         }
