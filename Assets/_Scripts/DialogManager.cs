@@ -6,6 +6,11 @@ using UnityEngine.InputSystem;  // TAMBAHKAN BARIS INI (Biar Unity kenal 'Mouse'
 
 public class DialogManager : MonoBehaviour
 {
+    [Header("SFX choice")]
+    public AudioSource uiAudioSource;
+    public AudioClip sfxPositif;
+    public AudioClip sfxNegatif;
+    public AudioClip sfxNetral;
     public TextMeshProUGUI dialogText; // tarik teks utama UI
     public GameObject dialogBox; // tarik panel/Image Background UI
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,15 +32,15 @@ public class DialogManager : MonoBehaviour
     public void StartDialog(string[] lines, NpcInteraction npc)
     {
         // Jika QuestManager ada dan quest lagi jalan, dialog tidak boleh terbuka
-        if (QuestManager.instance != null && QuestManager.instance.CheckIfQuestActive()) 
+        if (QuestManager.instance != null && QuestManager.instance.CheckIfQuestActive())
         {
-            return; 
+            return;
         }
         dialogBox.SetActive(true);
         choicePanel.SetActive(false);
         isWaitingForChoice = false;
         currentNPC = npc;
-        
+
         sentences.Clear();
 
         foreach (string line in lines)
@@ -73,7 +78,7 @@ public class DialogManager : MonoBehaviour
     public void DisplayNextSentence()
     {
         // Jika kalimat tinggal 1 dan tombol E dipencet, berarti itu kalimat terakhir
-        if(sentences.Count == 0)
+        if (sentences.Count == 0)
         {
             ShowChoices();
             return;
@@ -128,7 +133,7 @@ public class DialogManager : MonoBehaviour
         if (isWaitingForChoice)
         {
             PointerEventData pointerData = new PointerEventData(EventSystem.current);
-        
+
             // Mengambil posisi mause dari New Input System
             if (Mouse.current != null)
             {
@@ -146,4 +151,24 @@ public class DialogManager : MonoBehaviour
             }
         }
     }
+
+    public void PlayButtonSFX(int jenisOpsi)
+    {
+        if (uiAudioSource == null) return;
+
+        // jenisOpsi: 1 = Positif, 2 = Negatif, 3 = Netral
+        if (jenisOpsi == 1 && sfxPositif != null)
+        {
+            uiAudioSource.PlayOneShot(sfxPositif);
+        }
+        else if (jenisOpsi == 2 && sfxNegatif != null) // Sesuai dengan jenisnya
+        {
+            uiAudioSource.PlayOneShot(sfxNegatif);
+        }
+        else if (jenisOpsi == 3 && sfxNetral != null) // Sesuai dengan jenisnya
+        {
+            uiAudioSource.PlayOneShot(sfxNetral);
+        }
+    }
+
 }
