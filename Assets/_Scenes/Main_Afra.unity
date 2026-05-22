@@ -14999,8 +14999,8 @@ MonoBehaviour:
   playerTransform: {fileID: 571337112}
   radiusClue: 3
   pesanClue: Terima kasih ya, nak. Saya dengar kabar kalau pak soleh kehilangan dompet.
-    Kau bisa melewati jembatan tadi, lurus saja ke arah barat, dan belok ke arah
-    selatan menuju belakang rumah berwarna putih. Pak Sholeh ada disana.
+    Kamu bisa langsung ke arah selatan lalu menuju belakang rumah berwarna putih.
+    Pak Soleh ada disana.
 --- !u!1001 &1586216069
 PrefabInstance:
   m_ObjectHideFlags: 0
