@@ -896,7 +896,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -37.39}
   m_SizeDelta: {x: 450, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &153637791
@@ -952,7 +952,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -2696,6 +2696,78 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
+--- !u!1 &318158545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 318158546}
+  - component: {fileID: 318158548}
+  - component: {fileID: 318158547}
+  m_Layer: 0
+  m_Name: E_to_Cont
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &318158546
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318158545}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.11818181, y: 0.11818181, z: 0.11818182}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 942474726}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -582.61816, y: 204.10191}
+  m_SizeDelta: {x: 1598, y: 220}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &318158547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318158545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: ac29c342ba1ad6f47983072bf5184ee1, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &318158548
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318158545}
+  m_CullTransparentMesh: 1
 --- !u!1 &324415264
 GameObject:
   m_ObjectHideFlags: 0
@@ -5070,21 +5142,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcInteraction
   dialogSentences:
-  - Hmm... melihat kondisi desa kita akhir-akhir ini, rasanya saya gagal memimpin
-    warga dengan benar
-  - Lihatlah jalanan di dekat taman bermain itu, selalu penuh dengan sampah berserakan!
-    Tolong ya, Taher, jangan pernah kamu tiru kebiasaan buruk warga yang tidak bertanggung
-    jawab itu
-  - Penyakit lambung bapak sedang kambuh hari ini. Bisakah bapak minta tolong kepadamu
-    untuk mengumpulkan sampah di area itu? Tunjukkan pada mereka bahwa masih ada
-    harapan untuk desa kita
+  - 'Pak Kades:
+
+    Hmm... melihat kondisi desa kita akhir-akhir ini, rasanya saya
+    gagal memimpin warga dengan benar.'
+  - 'Pak Kades:
+
+    Lihatlah jalanan di dekat taman bermain itu, selalu penuh dengan
+    sampah berserakan! '
+  - "Pak Kades:\nPenyakit lambung bapak sedang kambuh hari ini.  Saya membutuhkan
+    warga untuk membersihkan sampah. Tetapi warga terlalu malas. Apakah kau akan
+    membantu, nak?\t"
   player: {fileID: 571337112}
   interactionDistance: 3
-  teksPositif: Siap, Pak Kades! Bapak istirahat di rumah saja biar lekas sembuh
-  teksNegatif: Waduh, nggak deh Pak. Itu kan sampahnya warga lain, masa saya yang
-    disuruh repot beresin?
-  teksNetral: Maaf banget, Pak Kades. kebetulan sekarang lagi ada urusan mendesak
-    yang nggak bisa ditinggal. Semoga cepat sembuh ya Pak
+  teksPositif: 'Siap, Pak Kades! Semoga lekas sembuh. '
+  teksNegatif: Waduh, nggak deh Pak. Itu kan bukan sampah saya.
+  teksNetral: Maaf bapak, saya sedang ada urusan. Semoga lekas sembuh.
   interactionPrompt: {fileID: 968481145}
   npcQuestID: Trash
   questDuration: 50
@@ -5153,7 +5226,8 @@ MonoBehaviour:
   myQuestID: Trash
   playerTransform: {fileID: 571337112}
   radiusClue: 3
-  pesanClue: thx taher! Ini pokonya clue ke npc ballon
+  pesanClue: Terima kasih anak muda. Sekarang pergilah ke arah barat dan ikuti jalan
+    menuju ke utara. Terus saja hingga kau bertemu anak kecil berbaju putih.
 --- !u!1 &556368394
 GameObject:
   m_ObjectHideFlags: 0
@@ -7218,7 +7292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.29803923}
+  m_Color: {r: 0.23137257, g: 0.19215688, b: 0.19215688, a: 0.67058825}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9171,6 +9245,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2060869163}
+  - {fileID: 318158546}
   - {fileID: 1292097885}
   m_Father: {fileID: 1686426093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12131,14 +12206,14 @@ RectTransform:
   m_GameObject: {fileID: 1337080488}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1604543884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.57, y: -16.2}
+  m_AnchoredPosition: {x: 14, y: -14.3}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1337080490
@@ -12155,15 +12230,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'test
-
-'
+  m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12173,7 +12246,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281087826
-  m_fontColor: {r: 0.32156864, g: 0.21568628, b: 0.17254902, a: 1}
+  m_fontColor: {r: 0.32156864, g: 0.21568629, b: 0.17254902, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12229,7 +12302,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -200, y: -50, z: 0, w: 0}
+  m_margin: {x: -569.6106, y: -50.795395, z: -522.75366, w: -90.231735}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -12563,16 +12636,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcInteraction
   dialogSentences:
-  - 'Huhuhu... Balonku lepas '
-  - 'Aku tidak sengaja melepaskannya ke udara, saya akan dimarahi mama dirumah hiks..
-    hiks.. '
-  - apakah kamu bisa membantu menemukan balonku kak? sepertinya tersangkut di disekitar
-    sini
+  - 'Bobi:
+
+    Hiks... Hiks... '
+  - 'Bobi:
+
+    Aku tidak sengaja melepaskan balonku dan itu tersangkut di pohon,
+    sepertinya aku akan dimarahi mama dirumah hiks.. hiks.. '
+  - 'Bobi:
+
+    Apakah kakak mau membantu mengambilkan balon-balonku?'
   player: {fileID: 571337112}
   interactionDistance: 3
-  teksPositif: Tentu, saya akan mencobanya!
-  teksNegatif: Gak peduli, cari sendiri!
-  teksNetral: Maaf, saya sedang lelah
+  teksPositif: Tentu, akan kakak bantu!
+  teksNegatif: Gak peduli, cari sendiri! Gitu aja nangis.
+  teksNetral: Maaf, dek. Kakak sedang tidak enak badan.
   interactionPrompt: {fileID: 306617029}
   npcQuestID: Balloon
   questDuration: 15
@@ -12641,7 +12719,9 @@ MonoBehaviour:
   myQuestID: Balloon
   playerTransform: {fileID: 571337112}
   radiusClue: 3
-  pesanClue: thx taher! Ini pokonya clue ke npc nelayan
+  pesanClue: Terima kasih ya kak. Aku melihat ada seorang wanita yang membutuhkan
+    bantuan. Ikuti jalan ini, terus ke arah selatan, dan lewati jembatan kedua dari
+    sini.
 --- !u!1 &1367744870 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 74813091587928200, guid: 01924a2de72104347b9eb5e720c57011, type: 3}
@@ -13881,7 +13961,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1474316784}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -14798,17 +14878,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcInteraction
   dialogSentences:
-  - "Saya sangat khawatir\u2026 suamiku pergi melaut tanpa membawa bekal makanan"
-  - "Laut yang luas dan ombak yang kuat pasti menguras tenaganya seharian. Tapi dia
-    meninggalkan bekalnya di rumah\u2026"
-  - dia sepertinya kamu masih berada di sekitar muara sungai, Taher.. bisakah kamu
-    membantuku mengantarkan bekal ini kepadanya?
+  - "Bu RIni:\nBagaimana ini\u2026 suamiku pergi berlayar tanpa membawa bekal makanan"
+  - "Bu Rini:\nLaut yang luas dan ombak yang kuat pasti menguras tenaganya seharian.
+    Tapi dia meninggalkan bekalnya di rumah\u2026"
+  - 'Bu Rini:
+
+    Sepertinya dia masih berada di sekitar muara sungai, Taher.. bisakah
+    kamu membantuku mengantarkan bekal ini kepadanya?'
   player: {fileID: 571337112}
   interactionDistance: 3
-  teksPositif: Tentu, aku akan mengantarkan bekal ini kepadanya
-  teksNegatif: Itu bukan urusanku. Cari orang lain saja
-  teksNetral: Maaf, aku sedang ada urusan lain sekarang. Mungkin orang lain bisa
-    membantumu
+  teksPositif: Tentu, aku akan mengantarkan bekal ini kepadanya.
+  teksNegatif: Itu bukan urusanku. Cari orang lain saja.
+  teksNetral: Maaf bu, saya cuma ingin jalan-jalan di sekitar sini.
   interactionPrompt: {fileID: 152197432}
   npcQuestID: Fisherman
   questDuration: 20
@@ -14877,7 +14958,9 @@ MonoBehaviour:
   myQuestID: Fisherman
   playerTransform: {fileID: 571337112}
   radiusClue: 3
-  pesanClue: thx taher! Ini pokonya clue ke npc wallet
+  pesanClue: Terima kasih ya, nak. Saya dengar kabar kalau pak soleh kehilangan dompet.
+    Kau bisa melewati jembatan tadi, lurus saja ke arah barat, dan belok ke arah
+    selatan menuju belakang rumah berwarna putih. Pak Sholeh ada disana.
 --- !u!1001 &1586216069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15796,15 +15879,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcInteraction
   dialogSentences:
-  - Halo Taher! Apa kabar
-  - Hari ini adalah hari yang buruk bagi saya
-  - Dompet dan flashdisk saya sepertinya terjatuh saat memberikan kandang ternak,
-    Bisakah kamu membantu saya menemukan dompet itu?
+  - 'Pak Soleh:
+
+    Halo Taher! Apa kabar?'
+  - 'Pak Soleh:
+
+    Hari ini adalah hari yang buruk bagi saya'
+  - 'Pak Soleh:
+
+    Dompet dan flashdisk saya sepertinya terjatuh saat memberikan
+    makan di kandang ternak, Bisakah kamu membantu saya menemukannya?'
   player: {fileID: 571337112}
   interactionDistance: 3
   teksPositif: Tentu, saya bantu Pak!
   teksNegatif: Saya malas, cari sendiri Pak!
-  teksNetral: Maaf, Semoga cepat ketemu. Saya ada keperluan mendadak Pak.
+  teksNetral: 'Maaf, Semoga cepat ketemu. '
   interactionPrompt: {fileID: 1434495586}
   npcQuestID: Wallet
   questDuration: 30
@@ -20635,14 +20724,14 @@ RectTransform:
   m_GameObject: {fileID: 2060869162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 942474726}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.57, y: -16.2}
+  m_AnchoredPosition: {x: 14.57, y: -7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2060869164
