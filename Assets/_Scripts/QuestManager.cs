@@ -50,6 +50,17 @@ public class QuestManager : MonoBehaviour
     [Header("Game Over Settings")]
     public GameObject gameOverPanel; // tarik gameoverpanel
 
+    [Header("Audio SFX")]
+    public AudioSource sfxSource;
+    public AudioClip collectSfx;
+    public AudioClip questSuccessSfx;
+    public AudioClip questFailSfx;
+
+    [Header("Dynamic Audio Settings")]
+    public AudioSource bgmSource;
+    public AudioClip normalBGM;
+    public AudioClip questActiveBGM;
+
     void Awake()
     {
         instance = this;
@@ -164,11 +175,19 @@ public class QuestManager : MonoBehaviour
         timer = questDuration;
 
         UpdateQuestListVisual(questID);
+
+        // bgm change
+        changeBGM(questActiveBGM);
     }
 
     public void RegisterItemCollected(string itemTag)
     {
         if (!isQuestActive) return;
+
+        if (sfxSource != null && collectSfx != null)
+        {
+            sfxSource.PlayOneShot(collectSfx);
+        }
 
         if (itemTag == "Dompet") hasWallet = true;
         if (itemTag == "Flashdisk") hasFlashdisk = true;
@@ -267,6 +286,11 @@ public class QuestManager : MonoBehaviour
 
         isQuestActive = false;
 
+        if (sfxSource != null && questSuccessSfx != null)
+        {
+            sfxSource.PlayOneShot(questSuccessSfx);
+        }
+
         // Hanya tambahkan ID jika belum pernah selesai sebelumnya!
         if (!completedQuestIDs.Contains(currentActiveQuestID))
         {
@@ -281,6 +305,9 @@ public class QuestManager : MonoBehaviour
             hud.TriggerPopupNotification("QUEST BERHASIL!", Color.green);
             hud.ChangeReputation(15f);
         }
+
+        // ChangeBGM(normal)
+        changeBGM(normalBGM);
 
         CheckFinalQuestCondition();
     }
@@ -335,6 +362,11 @@ public class QuestManager : MonoBehaviour
         // kurangi nyawa taher
         playerHealth--;
 
+        if (sfxSource != null && questFailSfx != null)
+        {
+            sfxSource.PlayOneShot(questFailSfx);
+        }
+
         if (hud != null)
         {
             // Bersih list tugas dan sembunyikan teks timer
@@ -347,6 +379,9 @@ public class QuestManager : MonoBehaviour
             // Kirim pesan gagal ke POPUP TENGAH LAYAR dengan warna MERAH MALAM
             hud.TriggerPopupNotification("QUEST GAGAL!\nWaktu Telah Habis", Color.red);
         }
+
+        // Change bgm(normal)
+        changeBGM(normalBGM);
 
         // deteksi nyawa 0 (lose condition)
         if (playerHealth <= 0)
@@ -414,5 +449,16 @@ public class QuestManager : MonoBehaviour
     {
         // Cek apakah ID quest-nya ada di dalam list yang sudah menang
         return completedQuestIDs.Contains(questID);
+    }
+
+    private void changeBGM(AudioClip newClip)
+    {
+        if (bgmSource != null && newClip != null)
+        {
+            bgmSource.Stop();
+            bgmSource.clip = newClip;
+            bgmSource.loop = true;
+            bgmSource.Play();
+        }
     }
 }
