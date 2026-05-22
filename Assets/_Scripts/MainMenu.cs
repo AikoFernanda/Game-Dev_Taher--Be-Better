@@ -14,6 +14,10 @@ public class MainMenu : MonoBehaviour
     public CanvasGroup fadeScreen; // tarik objek fadepanel
     public float fadeDuration = 1.0f; // durasi animasi menggelap
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    [Header("Audio Settings")]
+    public AudioSource uiAudioSource; // Tarik komponen Audio Source
+    public AudioClip clickSfx;        // Tarik file suara klik
     void Start()
     {
         // awal game layar transparan
@@ -28,9 +32,18 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    public void PlayClickSound()
+    {
+        if (uiAudioSource != null && clickSfx != null)
+        {
+            uiAudioSource.PlayOneShot(clickSfx);
+        }
+    }
+
     // fungsi yang akan dipanggil oleh tombol play
     public void Playgame()
     {
+        PlayClickSound(); // bunyikan sfx click
         // jalankan perintah hitung mundur transisi di background
         StartCoroutine(FadeAndLoadScene("Main")); // scene utama
     }
@@ -39,6 +52,7 @@ public class MainMenu : MonoBehaviour
     // Settings
     public void OpenSettings()
     {
+        PlayClickSound(); // bunyikan sfx click
         if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
         if (settingsPanel != null) settingsPanel.SetActive(true);
     }
@@ -46,12 +60,14 @@ public class MainMenu : MonoBehaviour
     // Membuka menu Panduan Tombol
     public void OpenControls()
     {
+        PlayClickSound(); // bunyikan sfx click
         if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
         if (controlsPanel != null) controlsPanel.SetActive(true);
     }
 
     public void OpenAbout()
     {
+        PlayClickSound(); // bunyikan sfx click
         if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
         if (aboutPanel != null) aboutPanel.SetActive(true);
     }
@@ -59,6 +75,7 @@ public class MainMenu : MonoBehaviour
     // Back button
     public void BackToMainMenu()
     {
+        PlayClickSound(); // bunyikan sfx click
         if (settingsPanel != null) settingsPanel.SetActive(false);
         if (controlsPanel != null) controlsPanel.SetActive(false);
         if (aboutPanel != null) aboutPanel.SetActive(false);
@@ -68,6 +85,7 @@ public class MainMenu : MonoBehaviour
     // fungsi tombol keluar game
     public void QuitGame()
     {
+        PlayClickSound(); // bunyikan sfx click
         #if UNITY_EDITOR
         // Jika dimainkan di dalam Unity Editor MacBook, matikan Play Mode
         UnityEditor.EditorApplication.isPlaying = false;
