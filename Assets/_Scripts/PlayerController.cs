@@ -1,58 +1,87 @@
 using UnityEngine;
 
+// 1. Automatically adds these components to the GameObject if they are missing
+[RequireComponent(typeof(Rigidbody), typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    
     public float moveSpeed = 5.0f;
     public float rotationSpeed = 720.0f;
     public float jumpForce = 5.0f;
 
     [Header("Physics Settings")]
     public bool isGrounded;
-    public LayerMask groundLayer; // pilih layer "default" atau "Ground"
-    public Transform groundCheck; // objek kosong di telapak kaki
+    public LayerMask groundLayer;
+    public Transform groundCheck;
 
     private Rigidbody rb;
     private Animator anim;
-    private Vector3 moveInput;
+
+    // 2. Cache the camera and pre-calculated direction
+    private Transform mainCamTransform;
+    private Vector3 movementDirection;
 
     void Start()
     {
-        // mengambil referensi komponen saat game dimulai
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+
+        // Cache the camera transform so we don't search for it every frame
+        if (Camera.main != null)
+        {
+            mainCamTransform = Camera.main.transform;
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // cek apakah di tanah, buat lingkaran kecil di kaki untuk deteksi lantai
-        isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
-        
-        // mengambil input dari keyboard
+        // 3. Safety check to prevent errors if groundCheck isn't assigned
+        if (groundCheck != null)
+        {
+            isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
+        }
+
         float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical"); 
+        float vertical = Input.GetAxis("Vertical");
 
-        moveInput = new Vector3(horizontal, 0, vertical).normalized;
+        Vector3 moveInput = new Vector3(horizontal, 0, vertical).normalized;
 
-        //Input lompat (space)
+        // 4. Calculate camera-relative direction in Update, NOT FixedUpdate
+        if (mainCamTransform != null && moveInput.magnitude >= 0.1f)
+        {
+            Vector3 camForward = mainCamTransform.forward;
+            Vector3 camRight = mainCamTransform.right;
+
+            camForward.y = 0;
+            camRight.y = 0;
+            camForward.Normalize();
+            camRight.Normalize();
+
+            movementDirection = (camForward * moveInput.z) + (camRight * moveInput.x);
+        }
+        else
+        {
+            movementDirection = Vector3.zero;
+        }
+
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             Jump();
         }
 
-        // update animasi mengirim nilai kecepatan ke parameter "Speed" di animator
         if (anim != null)
         {
             anim.SetFloat("Speed", moveInput.magnitude);
+            // 5. Send grounded state to Animator for falling/landing animations
+            anim.SetBool("IsGrounded", isGrounded);
         }
-
     }
 
     void Jump()
     {
+        // Reset Y velocity before jumping to ensure consistent jump heights
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
         if (anim != null)
         {
             anim.SetTrigger("Jump");
@@ -61,27 +90,12 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // logika pergerakan fisik RG
-        if (moveInput.magnitude >= 0.1f)
+        // 6. Only apply physical movement here using the direction calculated in Update
+        if (movementDirection.magnitude >= 0.1f)
         {
-            // ambil arah depan dan kanan kamera
-            Vector3 camForward = Camera.main.transform.forward;
-            Vector3 camRight = Camera.main.transform.right;
-
-            // buat arah tetap rata di tanah
-            camForward.y = 0;
-            camRight.y = 0;
-            camForward.Normalize();
-            camRight.Normalize();
-
-            //gabungkan input WASD dengan arah kamera
-            Vector3 movementDirection = (camForward * moveInput.z) + (camRight * moveInput.x);
-
-            // putar karakter ke arah tujuan berjalan
             Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
 
-            // menggerakkan posisi karakter
             rb.MovePosition(rb.position + movementDirection * moveSpeed * Time.fixedDeltaTime);
         }
     }
