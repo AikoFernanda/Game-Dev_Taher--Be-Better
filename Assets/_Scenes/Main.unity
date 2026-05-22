@@ -5070,21 +5070,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcInteraction
   dialogSentences:
-  - Hmm... melihat kondisi desa kita akhir-akhir ini, rasanya saya gagal memimpin
-    warga dengan benar
-  - Lihatlah jalanan di dekat taman bermain itu, selalu penuh dengan sampah berserakan!
-    Tolong ya, Taher, jangan pernah kamu tiru kebiasaan buruk warga yang tidak bertanggung
-    jawab itu
-  - Penyakit lambung bapak sedang kambuh hari ini. Bisakah bapak minta tolong kepadamu
-    untuk mengumpulkan sampah di area itu? Tunjukkan pada mereka bahwa masih ada
-    harapan untuk desa kita
+  - 'Pak Kades:
+
+    Hmm... melihat kondisi desa kita akhir-akhir ini, rasanya saya
+    gagal memimpin warga dengan benar.'
+  - 'Pak Kades:
+
+    Lihatlah jalanan di dekat taman bermain itu, selalu penuh dengan
+    sampah berserakan! '
+  - "Pak Kades:\nPenyakit lambung bapak sedang kambuh hari ini.  Saya membutuhkan
+    warga untuk membersihkan sampah. Tetapi warga terlalu malas. Apakah kau akan
+    membantu, nak?\t"
   player: {fileID: 571337112}
   interactionDistance: 3
-  teksPositif: Siap, Pak Kades! Bapak istirahat di rumah saja biar lekas sembuh
-  teksNegatif: Waduh, nggak deh Pak. Itu kan sampahnya warga lain, masa saya yang
-    disuruh repot beresin?
-  teksNetral: Maaf banget, Pak Kades. kebetulan sekarang lagi ada urusan mendesak
-    yang nggak bisa ditinggal. Semoga cepat sembuh ya Pak
+  teksPositif: 'Siap, Pak Kades! Semoga lekas sembuh. '
+  teksNegatif: Waduh, nggak deh Pak. Itu kan bukan sampah saya.
+  teksNetral: Maaf bapak, saya sedang ada urusan. Semoga lekas sembuh.
   interactionPrompt: {fileID: 968481145}
   npcQuestID: Trash
   questDuration: 50
@@ -5153,7 +5154,8 @@ MonoBehaviour:
   myQuestID: Trash
   playerTransform: {fileID: 571337112}
   radiusClue: 3
-  pesanClue: thx taher! Ini pokonya clue ke npc ballon
+  pesanClue: Terima kasih anak muda. Sekarang pergilah ke arah barat dan ikuti jalan
+    menuju ke utara. Terus saja hingga kau bertemu anak kecil berbaju putih.
 --- !u!1 &556368394
 GameObject:
   m_ObjectHideFlags: 0
@@ -12563,16 +12565,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcInteraction
   dialogSentences:
-  - 'Huhuhu... Balonku lepas '
-  - 'Aku tidak sengaja melepaskannya ke udara, saya akan dimarahi mama dirumah hiks..
-    hiks.. '
-  - apakah kamu bisa membantu menemukan balonku kak? sepertinya tersangkut di disekitar
-    sini
+  - 'Bobi:
+
+    Hiks... Hiks... '
+  - 'Bobi:
+
+    Aku tidak sengaja melepaskan balonku dan itu tersangkut di pohon,
+    sepertinya aku akan dimarahi mama dirumah hiks.. hiks.. '
+  - 'Bobi:
+
+    Apakah kakak mau membantu mengambilkan balon-balonku?'
   player: {fileID: 571337112}
   interactionDistance: 3
-  teksPositif: Tentu, saya akan mencobanya!
-  teksNegatif: Gak peduli, cari sendiri!
-  teksNetral: Maaf, saya sedang lelah
+  teksPositif: Tentu, akan kakak bantu!
+  teksNegatif: Gak peduli, cari sendiri! Gitu aja nangis.
+  teksNetral: Maaf, dek. Kakak sedang tidak enak badan.
   interactionPrompt: {fileID: 306617029}
   npcQuestID: Balloon
   questDuration: 15
@@ -12641,7 +12648,9 @@ MonoBehaviour:
   myQuestID: Balloon
   playerTransform: {fileID: 571337112}
   radiusClue: 3
-  pesanClue: thx taher! Ini pokonya clue ke npc nelayan
+  pesanClue: Terima kasih ya kak. Aku melihat ada seorang wanita yang membutuhkan
+    bantuan. Ikuti jalan ini, terus ke arah selatan, dan lewati jembatan kedua dari
+    sini.
 --- !u!1 &1367744870 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 74813091587928200, guid: 01924a2de72104347b9eb5e720c57011, type: 3}
@@ -14798,17 +14807,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcInteraction
   dialogSentences:
-  - "Saya sangat khawatir\u2026 suamiku pergi melaut tanpa membawa bekal makanan"
-  - "Laut yang luas dan ombak yang kuat pasti menguras tenaganya seharian. Tapi dia
-    meninggalkan bekalnya di rumah\u2026"
-  - dia sepertinya kamu masih berada di sekitar muara sungai, Taher.. bisakah kamu
-    membantuku mengantarkan bekal ini kepadanya?
+  - "Bu RIni:\nBagaimana ini\u2026 suamiku pergi berlayar tanpa membawa bekal makanan"
+  - "Bu Rini:\nLaut yang luas dan ombak yang kuat pasti menguras tenaganya seharian.
+    Tapi dia meninggalkan bekalnya di rumah\u2026"
+  - Sepertinya dia masih berada di sekitar muara sungai, Taher.. bisakah kamu membantuku
+    mengantarkan bekal ini kepadanya?
   player: {fileID: 571337112}
   interactionDistance: 3
-  teksPositif: Tentu, aku akan mengantarkan bekal ini kepadanya
-  teksNegatif: Itu bukan urusanku. Cari orang lain saja
-  teksNetral: Maaf, aku sedang ada urusan lain sekarang. Mungkin orang lain bisa
-    membantumu
+  teksPositif: Tentu, aku akan mengantarkan bekal ini kepadanya.
+  teksNegatif: Itu bukan urusanku. Cari orang lain saja.
+  teksNetral: Maaf bu, saya cuma ingin jalan-jalan di sekitar sini.
   interactionPrompt: {fileID: 152197432}
   npcQuestID: Fisherman
   questDuration: 20
@@ -14877,7 +14885,9 @@ MonoBehaviour:
   myQuestID: Fisherman
   playerTransform: {fileID: 571337112}
   radiusClue: 3
-  pesanClue: thx taher! Ini pokonya clue ke npc wallet
+  pesanClue: Terima kasih ya, nak. Saya dengar kabar kalau pak soleh kehilangan dompet.
+    Kau bisa melewati jembatan tadi, lurus saja ke arah barat, dan belok ke arah
+    selatan menuju belakang rumah berwarna putih. Pak Sholeh ada disana.
 --- !u!1001 &1586216069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15796,15 +15806,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcInteraction
   dialogSentences:
-  - Halo Taher! Apa kabar
-  - Hari ini adalah hari yang buruk bagi saya
-  - Dompet dan flashdisk saya sepertinya terjatuh saat memberikan kandang ternak,
-    Bisakah kamu membantu saya menemukan dompet itu?
+  - 'Pak Soleh:
+
+    Halo Taher! Apa kabar?'
+  - 'Pak Soleh:
+
+    Hari ini adalah hari yang buruk bagi saya'
+  - 'Pak Soleh:
+
+    Dompet dan flashdisk saya sepertinya terjatuh saat memberikan
+    makan di kandang ternak, Bisakah kamu membantu saya menemukannya?'
   player: {fileID: 571337112}
   interactionDistance: 3
   teksPositif: Tentu, saya bantu Pak!
   teksNegatif: Saya malas, cari sendiri Pak!
-  teksNetral: Maaf, Semoga cepat ketemu. Saya ada keperluan mendadak Pak.
+  teksNetral: 'Maaf, Semoga cepat ketemu. '
   interactionPrompt: {fileID: 1434495586}
   npcQuestID: Wallet
   questDuration: 30
