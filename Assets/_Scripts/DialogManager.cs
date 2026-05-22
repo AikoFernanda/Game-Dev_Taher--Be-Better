@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems; // Untuk detektif UI
 using UnityEngine.InputSystem;  // TAMBAHKAN BARIS INI (Biar Unity kenal 'Mouse')
@@ -22,6 +23,12 @@ public class DialogManager : MonoBehaviour
     private Queue<string> sentences; // antrean kalimat
     [HideInInspector] public bool isWaitingForChoice = false; // Mencegah pemain pencet E saat milih
     private NpcInteraction currentNPC; // Menyimpan referensi NPC yang sedang diajak bicara
+
+    [Header("Typewriter Settings")]
+    public float typingSpeed = 0.04f; // jeda
+    private Coroutine typingCoroutine; // penampung coroutine agar tidak tabrakan
+    private bool isTyping = false;     // Menandai apakah teks lagi proses mengeja
+    private string currentSentenceText; // Menyimpan kalimat yang sedang aktif dieja
     void Start()
     {
         sentences = new Queue<string>();
@@ -48,6 +55,20 @@ public class DialogManager : MonoBehaviour
             sentences.Enqueue(line); // masukkan semua kalimat ke antrean
         }
         DisplayNextSentence();
+    }
+
+    IEnumerator TypeSentence(string sentence)
+    {
+        isTyping = true;
+        dialogText.text = ""; //kosong saat awal kalimat
+
+        // ubah kalimat jadi array huruf, lalu munculin satu2
+        foreach (char letter in sentence.ToCharArray())
+        {
+            dialogText.text += letter;// tambah satu huruf
+            yield return new WaitForSeconds(typingSpeed); // tunggu sekian detik sebelum huruf berikutnya
+        }
+        isTyping = false;
     }
 
     void ShowChoices()
@@ -77,14 +98,30 @@ public class DialogManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        // Jika kalimat tinggal 1 dan tombol E dipencet, berarti itu kalimat terakhir
+        // MEKANIK SKIP Jika pemain buru-buru pencet E saat teks masih mengeja
+        if (isTyping)
+        {
+            if (typingCoroutine != null) StopCoroutine(typingCoroutine); // Hentikan ejaan
+            dialogText.text = currentSentenceText; // Langsung tampilkan teks utuh
+            isTyping = false; // Reset status eja
+            return; // STOP DI SINI (jangan lanjut ke kalimat berikutnya dulu)
+        }
+        // Jika antrean kalimat sudah habis dan teks sudah tidak mengeja, munculkan pilihan opsi
         if (sentences.Count == 0)
         {
             ShowChoices();
             return;
         }
-        string sentence = sentences.Dequeue(); // ambil kalimat paling depan
-        dialogText.text = sentence;
+        // Jika kondisi normal (teks sudah selesai mengeja), ambil kalimat berikutnya
+        string sentence = sentences.Dequeue(); 
+        currentSentenceText = sentence; // Simpan kalimat aktif ke variabel backup
+
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        typingCoroutine = StartCoroutine(TypeSentence(sentence));
     }
 
     // Fungsi yang akan dipanggil saat tombol diklik
@@ -113,6 +150,7 @@ public class DialogManager : MonoBehaviour
 
     public void EndDialog()
     {
+        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
         dialogBox.SetActive(false);
         choicePanel.SetActive(false);
         isWaitingForChoice = false;
