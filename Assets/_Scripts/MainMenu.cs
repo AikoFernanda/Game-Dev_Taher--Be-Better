@@ -45,7 +45,7 @@ public class MainMenu : MonoBehaviour
     {
         PlayClickSound(); // bunyikan sfx click
         // jalankan perintah hitung mundur transisi di background
-        StartCoroutine(FadeAndLoadScene("Main")); // scene utama
+        StartCoroutine(FadeAndLoadScene("IntroCutscene")); // scene utama
     }
 
     // Fungsi Navigas
