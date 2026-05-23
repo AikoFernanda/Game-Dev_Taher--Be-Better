@@ -20,10 +20,18 @@ public class NpcMother : MonoBehaviour
     public GameObject motherDialogPanel; // Tarik PanelDialog
     public TextMeshProUGUI motherDialogText;         // PENTING: Tarik TeksDialogIbu ke sini
 
+    [Header("Audio SFX")]
+    public AudioClip sfxMenang;    // Tarik MP3 suara Good Ending
+    public AudioClip sfxMenang2;    // Tarik MP3 suara Good Ending
+    public AudioClip sfxGagal;     // Tarik MP3 suara Bad Ending
+    private AudioSource audioMesin; // Variabel penampung mesin pemutar
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         dm = FindFirstObjectByType<DialogManager>();  // cari script
+        // Mengambil mesin AudioSource yang menempel pada objek NPC Ibu
+        audioMesin = GetComponent<AudioSource>();
 
     }
 
@@ -52,6 +60,12 @@ public class NpcMother : MonoBehaviour
             {
                 // Sembunyikan dialog biasa jika surat menang terbuka
                 if (motherDialogPanel != null) motherDialogPanel.SetActive(false);
+                // SFX MENANG (Cek agar tidak spam bunyi jika dipencet E berkali-kali)
+                if (audioMesin != null && sfxMenang != null && sfxMenang2 != null &&!latterPanel.activeSelf)
+                {
+                    audioMesin.PlayOneShot(sfxMenang2);
+                    audioMesin.PlayOneShot(sfxMenang);
+                }
                 // berhasil, munculkan surat ibu
                 latterPanel.SetActive(true);
                 // Sembunyikan prompt "Press E" karena surat sudah terbuka
@@ -143,6 +157,12 @@ public class NpcMother : MonoBehaviour
     void TriggerBadEnding()
     {
         Debug.Log("TAHER BAD ENDING: Tugas selesai tapi reputasi buruk!");
+
+        // FX Gagal / Bad Ending
+        if (audioMesin != null && sfxGagal != null)
+        {
+            audioMesin.PlayOneShot(sfxGagal);
+        }
 
         // Panel GameOver ada di QuestManager
         if (QuestManager.instance != null && QuestManager.instance.gameOverPanel != null)
