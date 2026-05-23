@@ -10,7 +10,7 @@ public class Cutscene : MonoBehaviour
     public struct Slide
     {
         public Texture image;
-        [TextArea(3,5)] public string storyText;
+        [TextArea(3, 5)] public string storyText;
     }
 
     [Header("Daftar Cerita")]
@@ -27,6 +27,10 @@ public class Cutscene : MonoBehaviour
     public Graphic faderPanel;      // Tarik objek Fader
     public float fadeDuration = 1.5f;         // Durasi waktu menggelap (detik)
 
+    [Header("Audio SFX")]
+    public AudioClip sfxClickNext;  // Tarik MP3 suara klik lanjut/E
+    private AudioSource audioMesin; // Variabel penampung mesin otomatis
+
     private bool isTyping = false;
     private string fullText;
     private Coroutine typingCoroutine; // penampung Coroutine eja
@@ -34,6 +38,8 @@ public class Cutscene : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // auto Mengambil komponen AudioSource yang nempel di objek Cutscene
+        audioMesin = GetComponent<AudioSource>();
         // kursor terkunci saat cutscene
         Cursor.visible = false;
         // Di awal game, pastikan panel fader dalam kondisi transparan (Alpha = 0)
@@ -61,6 +67,11 @@ public class Cutscene : MonoBehaviour
             }
             else
             {
+                // sfx Setiap kali tombol E ditekan, suara klik langsung berbunyi
+                if (audioMesin != null && sfxClickNext != null)
+                {
+                    audioMesin.PlayOneShot(sfxClickNext);
+                }
                 // jika sudah utuh, baru boleh lanjut slide
                 NextSlide();
             }
@@ -71,7 +82,7 @@ public class Cutscene : MonoBehaviour
     {
         displayImage.texture = allSlides[currentSlideIndex].image; // textures
         fullText = allSlides[currentSlideIndex].storyText;
-        
+
         // Pemicu ejaan teks berjalan aman
         typingCoroutine = StartCoroutine(TypeStory(fullText));
     }
@@ -94,7 +105,7 @@ public class Cutscene : MonoBehaviour
         if (faderPanel != null)
         {
             // Pastikan objeknya aktif secara visual sebelum transisi dimulai
-            faderPanel.gameObject.SetActive(true); 
+            faderPanel.gameObject.SetActive(true);
             faderPanel.enabled = true;
 
             float counter = 0f;
@@ -104,10 +115,10 @@ public class Cutscene : MonoBehaviour
             {
                 counter += Time.deltaTime;
                 float alphaBaru = Mathf.Lerp(0f, 1f, counter / fadeDuration);
-                
+
                 // Set warna hitam dengan alpha yang terus bertambah
-                faderPanel.color = new Color(0f, 0f, 0f, alphaBaru); 
-                
+                faderPanel.color = new Color(0f, 0f, 0f, alphaBaru);
+
                 yield return null;
             }
         }

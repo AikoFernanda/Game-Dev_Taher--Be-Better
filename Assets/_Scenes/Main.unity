@@ -1375,7 +1375,6 @@ MonoBehaviour:
   sfxMenang: {fileID: 8300000, guid: a834ce5bc6f8140ca85c0adaa3d0f35d, type: 3}
   sfxMenang2: {fileID: 8300000, guid: f1914c322cd3d4ea7b506860bae0af91, type: 3}
   sfxGagal: {fileID: 0}
-  sfxClick: {fileID: 8300000, guid: e0f8f80bd73a640b7b1f8e367ef5bdc1, type: 3}
 --- !u!136 &191938231
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -20659,7 +20658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1935906777
 RectTransform:
   m_ObjectHideFlags: 0
