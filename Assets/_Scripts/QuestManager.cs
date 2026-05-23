@@ -303,7 +303,7 @@ public class QuestManager : MonoBehaviour
         {
             hud.UpdateQuestTracker("-");
             hud.UpdateTimerText("", false);
-            hud.TriggerPopupNotification("QUEST BERHASIL!", Color.green);
+            hud.TriggerPopupNotification("QUEST BERHASIL!\nTemui kembali untuk informasi selanjutnya.", Color.green);
             hud.ChangeReputation(15f);
         }
 
