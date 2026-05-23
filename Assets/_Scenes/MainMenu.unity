@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
   mainMenuPanel: {fileID: 1921014646}
   settingsPanel: {fileID: 1537375620}
-  controlsPanel: {fileID: 0}
+  controlsPanel: {fileID: 378768400}
   aboutPanel: {fileID: 347482588}
   fadeScreen: {fileID: 1980006140}
   fadeDuration: 1
@@ -640,7 +640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &378768401
 RectTransform:
   m_ObjectHideFlags: 0
