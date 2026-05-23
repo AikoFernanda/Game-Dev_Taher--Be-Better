@@ -55,6 +55,7 @@ public class QuestManager : MonoBehaviour
     public AudioClip collectSfx;
     public AudioClip questSuccessSfx;
     public AudioClip questFailSfx;
+    public AudioClip clickSfx;
 
     [Header("Dynamic Audio Settings")]
     public AudioSource bgmSource;
@@ -427,6 +428,11 @@ public class QuestManager : MonoBehaviour
 
     public void RetryGame()
     {
+        // SFX KLIK sebelum scene di-reload
+        if (sfxSource != null && clickSfx != null)
+        {
+            sfxSource.PlayOneShot(clickSfx);
+        }
         Time.timeScale = 1f; // kembalikan kecepatan waktu game ke normal
         // reload ulang Main scene dari awal secara bersih
         string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
@@ -435,6 +441,11 @@ public class QuestManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        // SFX KLIK sebelum scene di-reload
+        if (sfxSource != null && clickSfx != null)
+        {
+            sfxSource.PlayOneShot(clickSfx);
+        }
         Time.timeScale = 1f; // kembalikan kecepatan waktu game ken normal
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu"); // load scene MainMenu
     }

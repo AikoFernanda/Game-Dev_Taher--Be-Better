@@ -10,8 +10,26 @@ public class EndingManager : MonoBehaviour
     public float fadeDuration = 2f;
     public string namaSceneEnding = "Ending";
 
+    [Header("Audio SFX")]
+    public AudioClip sfxClickLanjut; //Tarik MP3 suara klik lanjut
+    private AudioSource audioMesin;  // Variabel penampung mesin otomatis
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    void Start()
+    {
+        {
+        // Mengambil komponen AudioSource yang nempel di objek EndingManager
+        audioMesin = GetComponent<AudioSource>();
+        }
+    }
     public void LanjutKeEnding()
     {
+        // SFX KLIK sebelum waktu dinormalkan dan scene mulai meredup
+        if (audioMesin != null && sfxClickLanjut != null)
+        {
+            audioMesin.PlayOneShot(sfxClickLanjut);
+        }
         // kembalikan waktu normal
         Time.timeScale = 1f;
 
@@ -39,13 +57,6 @@ public class EndingManager : MonoBehaviour
         // pindah scene
         SceneManager.LoadScene(namaSceneEnding);
     }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
