@@ -1273,7 +1273,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4859127903178767530, guid: bde2ebe98386b884bb311314cf5dc4cb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -824.85
+      value: -834.21
       objectReference: {fileID: 0}
     - target: {fileID: 4859127903178767530, guid: bde2ebe98386b884bb311314cf5dc4cb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1281,7 +1281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4859127903178767530, guid: bde2ebe98386b884bb311314cf5dc4cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.7
+      value: 26.85
       objectReference: {fileID: 0}
     - target: {fileID: 4859127903178767530, guid: bde2ebe98386b884bb311314cf5dc4cb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3572,19 +3572,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1220767855446283451, guid: 3763f3535841a4842bfe341f2eba7b74, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 67.45001
+      value: 67.351
       objectReference: {fileID: 0}
     - target: {fileID: 1220767855446283451, guid: 3763f3535841a4842bfe341f2eba7b74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.0699997
+      value: 4.113
       objectReference: {fileID: 0}
     - target: {fileID: 1220767855446283451, guid: 3763f3535841a4842bfe341f2eba7b74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 76.52
+      value: 76.529
       objectReference: {fileID: 0}
     - target: {fileID: 1220767855446283451, guid: 3763f3535841a4842bfe341f2eba7b74, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7383065
       objectReference: {fileID: 0}
     - target: {fileID: 1220767855446283451, guid: 3763f3535841a4842bfe341f2eba7b74, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3592,7 +3592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1220767855446283451, guid: 3763f3535841a4842bfe341f2eba7b74, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.67446536
       objectReference: {fileID: 0}
     - target: {fileID: 1220767855446283451, guid: 3763f3535841a4842bfe341f2eba7b74, type: 3}
       propertyPath: m_LocalRotation.z
@@ -3604,7 +3604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1220767855446283451, guid: 3763f3535841a4842bfe341f2eba7b74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -84.825
       objectReference: {fileID: 0}
     - target: {fileID: 1220767855446283451, guid: 3763f3535841a4842bfe341f2eba7b74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -3718,8 +3718,8 @@ Light:
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 10
+  m_Intensity: 5
+  m_Range: 20
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
@@ -5350,8 +5350,10 @@ MonoBehaviour:
   myQuestID: Trash
   playerTransform: {fileID: 571337112}
   radiusClue: 3
-  pesanClue: Terima kasih anak muda. Sekarang pergilah ke arah barat dan ikuti jalan
-    menuju ke utara. Terus saja hingga kau bertemu anak kecil berbaju putih.
+  pesanClue: Pak Kades:\nTerima kasih, anak muda... Kamu sudah menjadi contoh yang
+    baik bagi warga di desa ini. Taher, sepertinya ibumu sedang mencarimu... Pergilah
+    menemuinya. Terakhir kali saya melihatnya berada di depan rumah, di arah utara
+    dari sini.
 --- !u!1 &556368394
 GameObject:
   m_ObjectHideFlags: 0
@@ -6297,7 +6299,7 @@ AudioSource:
   m_GameObject: {fileID: 683592017}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1596801242725653647, guid: d75f7369198a94f9294175a7bf9b69b0, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 51d36e8ee5f7e4870bcfcabdecec102b, type: 3}
   m_PlayOnAwake: 1
@@ -6896,19 +6898,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8401965021515043907, guid: 2bf9b47dc169d2f46985551a993db2e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50.98401
+      value: 51.62
       objectReference: {fileID: 0}
     - target: {fileID: 8401965021515043907, guid: 2bf9b47dc169d2f46985551a993db2e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.033001
+      value: 3.922
       objectReference: {fileID: 0}
     - target: {fileID: 8401965021515043907, guid: 2bf9b47dc169d2f46985551a993db2e0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 77.531
+      value: 76.84
       objectReference: {fileID: 0}
     - target: {fileID: 8401965021515043907, guid: 2bf9b47dc169d2f46985551a993db2e0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.9337675
       objectReference: {fileID: 0}
     - target: {fileID: 8401965021515043907, guid: 2bf9b47dc169d2f46985551a993db2e0, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6916,7 +6918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8401965021515043907, guid: 2bf9b47dc169d2f46985551a993db2e0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.35788032
       objectReference: {fileID: 0}
     - target: {fileID: 8401965021515043907, guid: 2bf9b47dc169d2f46985551a993db2e0, type: 3}
       propertyPath: m_LocalRotation.z
@@ -6928,7 +6930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8401965021515043907, guid: 2bf9b47dc169d2f46985551a993db2e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -318.06
       objectReference: {fileID: 0}
     - target: {fileID: 8401965021515043907, guid: 2bf9b47dc169d2f46985551a993db2e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -7034,8 +7036,8 @@ Light:
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 10
+  m_Intensity: 5
+  m_Range: 20
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
@@ -7073,7 +7075,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -7173,7 +7175,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 20
+  m_Value: 30
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8965,15 +8967,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4399258561322959918, guid: 5e761865e5501ab47ba2c9cc92ed15f3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 56.880005
+      value: 57.528
       objectReference: {fileID: 0}
     - target: {fileID: 4399258561322959918, guid: 5e761865e5501ab47ba2c9cc92ed15f3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.78
+      value: 4.03
       objectReference: {fileID: 0}
     - target: {fileID: 4399258561322959918, guid: 5e761865e5501ab47ba2c9cc92ed15f3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 84.47
+      value: 84.123
       objectReference: {fileID: 0}
     - target: {fileID: 4399258561322959918, guid: 5e761865e5501ab47ba2c9cc92ed15f3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9103,8 +9105,8 @@ Light:
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 10
+  m_Intensity: 5
+  m_Range: 20
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
@@ -12608,7 +12610,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14, y: -14.3}
+  m_AnchoredPosition: {x: 14, y: -1}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1337080490
@@ -12697,7 +12699,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -569.6106, y: -50.795395, z: -522.75366, w: -90.231735}
+  m_margin: {x: -569.6106, y: -50.795395, z: -522.75366, w: -75.75904}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -13048,7 +13050,7 @@ MonoBehaviour:
   teksNetral: Maaf, dek. Kakak sedang tidak enak badan.
   interactionPrompt: {fileID: 306617029}
   npcQuestID: Balloon
-  questDuration: 15
+  questDuration: 25
 --- !u!136 &1364314364
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13114,9 +13116,9 @@ MonoBehaviour:
   myQuestID: Balloon
   playerTransform: {fileID: 571337112}
   radiusClue: 3
-  pesanClue: Terima kasih ya kak. Aku melihat ada seorang wanita yang membutuhkan
-    bantuan. Ikuti jalan ini, terus ke arah selatan, dan lewati jembatan kedua dari
-    sini.
+  pesanClue: Bobi:\nTerima kasih ya, Kak... Aku senang banget balon-balonnya bisa
+    kembali lagi. Tadi pagi aku lihat ada seorang ibu yang kelihatannya lagi cemas,
+    Coba ikuti jalan ini ke arah barat. Ibu itu ada di seberang jembatan, dekat peternakan.
 --- !u!1 &1367744870 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 74813091587928200, guid: 01924a2de72104347b9eb5e720c57011, type: 3}
@@ -15289,7 +15291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NpcInteraction
   dialogSentences:
-  - "Bu RIni:\nBagaimana ini\u2026 suamiku pergi berlayar tanpa membawa bekal makanan"
+  - "Bu Rini:\nBagaimana ini\u2026 suamiku pergi berlayar tanpa membawa bekal makanan"
   - "Bu Rini:\nLaut yang luas dan ombak yang kuat pasti menguras tenaganya seharian.
     Tapi dia meninggalkan bekalnya di rumah\u2026"
   - 'Bu Rini:
@@ -15303,7 +15305,7 @@ MonoBehaviour:
   teksNetral: Maaf bu, saya cuma ingin jalan-jalan di sekitar sini.
   interactionPrompt: {fileID: 152197432}
   npcQuestID: Fisherman
-  questDuration: 20
+  questDuration: 30
 --- !u!136 &1581398145
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -15369,9 +15371,10 @@ MonoBehaviour:
   myQuestID: Fisherman
   playerTransform: {fileID: 571337112}
   radiusClue: 3
-  pesanClue: Terima kasih ya, nak. Saya dengar kabar kalau pak soleh kehilangan dompet.
-    Kamu bisa langsung ke arah selatan lalu menuju belakang rumah berwarna putih.
-    Pak Soleh ada disana.
+  pesanClue: Bu Rini:\nTerima kasih ya, Taher... Kamu memang anak yang baik. Ngomong-ngomong,
+    apa kamu melihat Pak Soleh hari ini? Dari tadi beliau kelihatan kebingungan sekali.
+    Terakhir Ibu lihat, beliau ada di belakang rumahnya. Coba ikuti jalan ke arah
+    selatan, rumahnya yang besar dan berwarna putih itu.
 --- !u!1001 &1586216069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16485,10 +16488,10 @@ MonoBehaviour:
   myQuestID: Wallet
   playerTransform: {fileID: 571337112}
   radiusClue: 3
-  pesanClue: Terima kasih ya, nak bantuannya. Saya baru ingat, pak Kades sedang membutuhkan
-    bantuan. Kau bisa keluar dari sini melewati jembatan. Terus ke arah timur. Jika
-    kau melihat terdapat bangunan berwarna biru, langsung menuju ke arah selatan,
-    dan pak Kades ada di sana bersama warga.
+  pesanClue: Pak Soleh:\nWah... kamu berhasil menemukannya. Terima kasih banyak,
+    Taher. Oh iya, Pak Kades sepertinya hari ini sedang membutuhkan bantuan. Kurasa
+    kamu orang yang tepat untuk menolongnya. Coba ikuti jalan ke arah timur, lalu
+    seberangi jembatan. Biasanya Pak Kades berada di sekitar kantor Sheriff.
 --- !u!1 &1660992027 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6887492905121085115, guid: 2a1e00f6fd8038f4eb484539be2d71d2, type: 3}
@@ -16574,7 +16577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4878877630203559069, guid: b66ab8021191bf2439feb632098e4107, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 63.919983
+      value: 69.51
       objectReference: {fileID: 0}
     - target: {fileID: 4878877630203559069, guid: b66ab8021191bf2439feb632098e4107, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16720,8 +16723,8 @@ Light:
   serializedVersion: 12
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 10
+  m_Intensity: 5
+  m_Range: 20
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
@@ -19655,7 +19658,7 @@ AudioSource:
   m_GameObject: {fileID: 1885677116}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7945789624091105254, guid: d75f7369198a94f9294175a7bf9b69b0, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -21360,7 +21363,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.57, y: -7}
+  m_AnchoredPosition: {x: 14.57, y: -5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2060869164
@@ -21449,7 +21452,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -569.6106, y: -50.795395, z: -522.75366, w: -90.231735}
+  m_margin: {x: -569.6106, y: -50.795395, z: -522.75366, w: -74.88724}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

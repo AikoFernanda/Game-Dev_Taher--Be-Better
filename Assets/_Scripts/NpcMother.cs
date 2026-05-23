@@ -61,7 +61,8 @@ public class NpcMother : MonoBehaviour
 
                 Cursor.lockState = CursorLockMode.None; // Lepas kunci kursor agar bebas bergerak
                 Cursor.visible = true;
-            } else if (QuestManager.instance.IsReadyForEnding() && reputationBar.value <= reputationBar.maxValue)
+            }
+            else if (QuestManager.instance.IsReadyForEnding() && reputationBar.value <= reputationBar.maxValue)
             {
                 // jika quest seelesai tapi reputasi tidak penuh adalah bad ending muncul panel gameover
                 if (motherDialogPanel != null) motherDialogPanel.SetActive(false);
@@ -73,7 +74,8 @@ public class NpcMother : MonoBehaviour
             else
             {
                 // jika belum 100%
-                ShowMotherSpeech("Ibu: Jadilah pemuda yang berguna untuk desa ini dulu ya, Nak...");            }
+                ShowMotherSpeech("Ibu:\nJadilah pemuda yang berguna bagi desa ini ya, Nak... hmm, kamu dengar itu? Sepertinya ada seseorang yang sedang menangis. Suaranya berasal dari arah timur.");
+            }
 
         }
     }
@@ -107,7 +109,7 @@ public class NpcMother : MonoBehaviour
             if (QuestManager.instance != null && QuestManager.instance.CheckIfQuestActive())
             {
                 if (interactionPrompt != null) interactionPrompt.SetActive(false);
-                return; 
+                return;
             }
 
             // Nyalakan prompt Press E hanya jika panel dialog Ibu sedang tidak terbuka
@@ -118,14 +120,14 @@ public class NpcMother : MonoBehaviour
         }
     }
 
-        // terdeteksi player menjauh
+    // terdeteksi player menjauh
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
 
-            if (dm != null) 
+            if (dm != null)
             {
                 dm.EndDialog();
             }
