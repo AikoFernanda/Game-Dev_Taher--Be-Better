@@ -1,7 +1,7 @@
 using UnityEngine;
 
-// 1. Automatically adds these components to the GameObject if they are missing
-[RequireComponent(typeof(Rigidbody), typeof(Animator))]
+// Menambahkan AudioSource otomatis jika belum ada di GameObject
+[RequireComponent(typeof(Rigidbody), typeof(Animator), typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
@@ -12,6 +12,12 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
     public LayerMask groundLayer;
     public Transform groundCheck;
+
+    [Header("Audio Settings (Footsteps)")]
+    [Tooltip("Masukkan 2 file MP3 hentakan kaki di sini")]
+    public AudioClip[] footstepClips; // kiri, kanan
+    private AudioSource audioSource;
+    private int currentFootstepIndex = 0; // Untuk melacak giliran kaki kanan/kiri
 
     private Rigidbody rb;
     private Animator anim;
@@ -24,6 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>(); // Ambil komponen AudioSource
 
         // Cache the camera transform so we don't search for it every frame
         if (Camera.main != null)
@@ -97,6 +104,23 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
 
             rb.MovePosition(rb.position + movementDirection * moveSpeed * Time.fixedDeltaTime);
+        }
+    }
+
+    // Fungsi ini akan dipanggil otomatis via Animation Event di dalam animasi Lari
+    public void PlayFootstep()
+    {
+        // Validasi: Hanya bunyikan jika Taher menyentuh tanah, sedang bergerak, dan file audio sudah dimasukkan
+        if (isGrounded && movementDirection.magnitude >= 0.1f && footstepClips.Length > 0)
+        {
+            // Ambil clip berdasarkan giliran (index 0 atau index 1)
+            AudioClip clipToPlay = footstepClips[currentFootstepIndex];
+            
+            // Putar suaranya sekali tembak (PlayOneShot)
+            audioSource.PlayOneShot(clipToPlay);
+
+            // Ganti giliran indeks untuk langkah berikutnya (bergantian antara 0 dan 1)
+            currentFootstepIndex = (currentFootstepIndex + 1) % footstepClips.Length;
         }
     }
 }
