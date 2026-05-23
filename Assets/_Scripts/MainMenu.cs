@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement; // Untuk mengendalikan perpindahan scene
 using System.Collections;
+using UnityEngine.Audio; // audio mixer
 
 public class MainMenu : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class MainMenu : MonoBehaviour
     [Header("Audio Settings")]
     public AudioSource uiAudioSource; // Tarik komponen Audio Source
     public AudioClip clickSfx;        // Tarik file suara klik
+    public AudioMixer mainMixer; // tarik file mixer
+
     void Start()
     {
         // awal game layar transparan
@@ -86,19 +89,19 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         PlayClickSound(); // bunyikan sfx click
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         // Jika dimainkan di dalam Unity Editor MacBook, matikan Play Mode
         UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#else
         // Jika sudah jadi game asli (.app / .exe), matikan aplikasinya
         Application.Quit();
-        #endif
+#endif
     }
 
     // coroutine untuk animasi fade out (gak ribet bikin animasi clip)
     IEnumerator FadeAndLoadScene(string sceneName)
     {
-        if(fadeScreen != null)
+        if (fadeScreen != null)
         {
             float timer = 0f;
             // selama timer belum mencapai durasi, naikkan alpha panel hitam perlahan
@@ -111,5 +114,31 @@ public class MainMenu : MonoBehaviour
             // setelah layar hitam pekat, baru pindah Main scene
             SceneManager.LoadScene(sceneName);
         }
+    }
+
+    // Fungsi untuk mengubah mode layar (Fullscreen / Windowed)
+    public void SetFullscreen(bool apakahFullscreen)
+    {
+        // Bawaan Unity untuk mengatur layar
+        Screen.fullScreen = apakahFullscreen;
+
+        Debug.Log("Status Layar Penuh diubah menjadi: " + apakahFullscreen);
+    }
+
+    // Fungsi untuk mengatur volume BGM
+    public void SetVolumeBGM(float valueSlider)
+    {
+        // Mengubah nilai slider (0 sampai 1) menjadi desibel (-80 sampai 0)
+        float desibel = Mathf.Log10(Mathf.Clamp(valueSlider, 0.0001f, 1f)) * 20f;
+
+        // Panggil nama parameter yang dbuat di Mixer
+        mainMixer.SetFloat("volumeBGM", desibel);
+    }
+
+    // Fungsi untuk mengatur volume SFX
+    public void SetVolumeSFX(float valueSlider)
+    {
+        float desibel = Mathf.Log10(Mathf.Clamp(valueSlider, 0.0001f, 1f)) * 20f;
+        mainMixer.SetFloat("volumeSFX", desibel);
     }
 }
