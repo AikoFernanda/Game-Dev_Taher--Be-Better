@@ -1654,7 +1654,7 @@ RectTransform:
   m_GameObject: {fileID: 188526060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.65, y: 0.3620253, z: 0.4954728}
+  m_LocalScale: {x: 0.8977273, y: 0.5, z: 0.68430686}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1934036290}
@@ -1790,6 +1790,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4859127903178767532, guid: bde2ebe98386b884bb311314cf5dc4cb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 191938233}
+    - targetCorrespondingSourceObject: {fileID: 4859127903178767532, guid: bde2ebe98386b884bb311314cf5dc4cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 191938235}
   m_SourcePrefab: {fileID: 100100000, guid: bde2ebe98386b884bb311314cf5dc4cb, type: 3}
 --- !u!4 &191938227 stripped
 Transform:
@@ -1970,6 +1973,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &191938235
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191938228}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &198233580 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3025796837846832652, guid: cfd80bcd0722f0a43abb35f9a08c8a2a, type: 3}
@@ -7182,6 +7208,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5388624719327353857, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
       insertIndex: -1
       addedObject: {fileID: 542303781}
+    - targetCorrespondingSourceObject: {fileID: 5388624719327353857, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 542303783}
   m_SourcePrefab: {fileID: 100100000, guid: 49121edd22c328c47a8918cf7e48e4ee, type: 3}
 --- !u!4 &542303775 stripped
 Transform:
@@ -7294,6 +7323,29 @@ MonoBehaviour:
     baik bagi warga di desa ini. Taher, sepertinya ibumu sedang mencarimu... Pergilah
     menemuinya. Terakhir kali saya melihatnya berada di depan rumah, di arah utara
     dari sini.
+--- !u!136 &542303783
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542303776}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &556368394
 GameObject:
   m_ObjectHideFlags: 0
@@ -9863,6 +9915,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!136 &775555608
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775555602}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &795046769
 GameObject:
   m_ObjectHideFlags: 0
@@ -10954,6 +11029,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8085793654713421506, guid: 4e90a33f5b1393648906ce1be40f2c30, type: 3}
       insertIndex: -1
       addedObject: {fileID: 775555605}
+    - targetCorrespondingSourceObject: {fileID: 8085793654713421506, guid: 4e90a33f5b1393648906ce1be40f2c30, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 775555608}
   m_SourcePrefab: {fileID: 100100000, guid: 4e90a33f5b1393648906ce1be40f2c30, type: 3}
 --- !u!1 &862608856
 GameObject:
@@ -17828,6 +17906,9 @@ PrefabInstance:
       addedObject: {fileID: 1364314364}
     - targetCorrespondingSourceObject: {fileID: 644397509381971841, guid: d65bb4016db8bce48abb258b5fa2ff61, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1364314368}
+    - targetCorrespondingSourceObject: {fileID: 644397509381971841, guid: d65bb4016db8bce48abb258b5fa2ff61, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1364314366}
   m_SourcePrefab: {fileID: 100100000, guid: d65bb4016db8bce48abb258b5fa2ff61, type: 3}
 --- !u!4 &1364314360 stripped
@@ -17939,6 +18020,29 @@ MonoBehaviour:
   pesanClue: Bobi:\nTerima kasih ya, Kak... Aku senang banget balon-balonnya bisa
     kembali lagi. Tadi pagi aku lihat ada seorang ibu yang kelihatannya lagi cemas,
     Coba ikuti jalan ini ke arah barat. Ibu itu ada di seberang jembatan, dekat peternakan.
+--- !u!136 &1364314368
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364314361}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &1367744870 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 74813091587928200, guid: 01924a2de72104347b9eb5e720c57011, type: 3}
@@ -20719,6 +20823,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6707088506844094187, guid: 12470d56d64eadc48915ac53abe53e25, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1581398147}
+    - targetCorrespondingSourceObject: {fileID: 6707088506844094187, guid: 12470d56d64eadc48915ac53abe53e25, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1581398149}
   m_SourcePrefab: {fileID: 100100000, guid: 12470d56d64eadc48915ac53abe53e25, type: 3}
 --- !u!4 &1581398141 stripped
 Transform:
@@ -20827,6 +20934,29 @@ MonoBehaviour:
     apa kamu melihat Pak Soleh hari ini? Dari tadi beliau kelihatan kebingungan sekali.
     Terakhir Ibu lihat, beliau ada di belakang rumahnya. Coba ikuti jalan ke arah
     selatan, rumahnya yang besar dan berwarna putih itu.
+--- !u!136 &1581398149
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581398142}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1001 &1586216069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22099,6 +22229,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1303869121318198912, guid: 3625b8aaa69cde2449bff0b4bc37913b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1660178817}
+    - targetCorrespondingSourceObject: {fileID: 1303869121318198912, guid: 3625b8aaa69cde2449bff0b4bc37913b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1660178819}
   m_SourcePrefab: {fileID: 100100000, guid: 3625b8aaa69cde2449bff0b4bc37913b, type: 3}
 --- !u!4 &1660178811 stripped
 Transform:
@@ -22210,6 +22343,29 @@ MonoBehaviour:
     Taher. Oh iya, Pak Kades sepertinya hari ini sedang membutuhkan bantuan. Kurasa
     kamu orang yang tepat untuk menolongnya. Coba ikuti jalan ke arah timur, lalu
     seberangi jembatan. Biasanya Pak Kades berada di sekitar kantor Sheriff.
+--- !u!136 &1660178819
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660178812}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!1 &1660992027 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6887492905121085115, guid: 2a1e00f6fd8038f4eb484539be2d71d2, type: 3}
