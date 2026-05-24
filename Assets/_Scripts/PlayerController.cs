@@ -103,7 +103,14 @@ public class PlayerController : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
 
-            rb.MovePosition(rb.position + movementDirection * moveSpeed * Time.fixedDeltaTime);
+            Vector3 targetVelocity = movementDirection * moveSpeed;
+            targetVelocity.y = rb.linearVelocity.y;
+
+            rb.linearVelocity = targetVelocity;
+        }
+        else
+        {
+            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
         }
     }
 
@@ -115,7 +122,7 @@ public class PlayerController : MonoBehaviour
         {
             // Ambil clip berdasarkan giliran (index 0 atau index 1)
             AudioClip clipToPlay = footstepClips[currentFootstepIndex];
-            
+
             // Putar suaranya sekali tembak (PlayOneShot)
             audioSource.PlayOneShot(clipToPlay);
 
